@@ -14,6 +14,7 @@ import { db } from "../../shared/firebase";
 import { useCollectionQuery } from "../../hooks/useCollectionQuery";
 import { useNavigate } from "react-router-dom";
 import { useStore } from "../../store";
+import Alert from "../Alert";
 
 interface CreateConversationProps {
   setIsOpened: (value: boolean) => void;
@@ -30,7 +31,8 @@ const CreateConversation: FC<CreateConversationProps> = ({ setIsOpened }) => {
   const currentUser = useStore((state) => state.currentUser);
 
   const [selected, setSelected] = useState<string[]>([]);
-
+  const [isAlertOpened, setIsAlertOpened] = useState<boolean>(false);
+  const [alertText, setAlertText] = useState<string>("");
   const navigate = useNavigate();
 
   const handleToggle = (uid: string) => {
@@ -52,8 +54,8 @@ const CreateConversation: FC<CreateConversationProps> = ({ setIsOpened }) => {
     );
 
     const querySnapshot = await getDocs(q);
-
-    if (querySnapshot.empty) {
+    //querySnapshot.empty &&
+    if (sorted.length > 2) {
       const created = await addDoc(collection(db, "conversations"), {
         users: sorted,
         group:
@@ -70,16 +72,15 @@ const CreateConversation: FC<CreateConversationProps> = ({ setIsOpened }) => {
       });
 
       setIsCreating(false);
-
       setIsOpened(false);
-
       navigate(`/${created.id}`);
     } else {
-      setIsOpened(false);
-
-      navigate(`/${querySnapshot.docs[0].id}`);
-
-      setIsCreating(false);
+      console.log("something went wrong");
+      setAlertText("Please choose multi user fo create a squad!");
+      setIsOpened(true);
+      // setIsOpened(false);
+      // navigate(`/${querySnapshot.docs[0].id}`);
+      // setIsCreating(false);
     }
   };
 
@@ -88,6 +89,12 @@ const CreateConversation: FC<CreateConversationProps> = ({ setIsOpened }) => {
       onClick={() => setIsOpened(false)}
       className="fixed top-0 left-0 z-20 flex h-full w-full items-center justify-center bg-[#00000080]"
     >
+      <Alert
+        isOpened={isAlertOpened}
+        setIsOpened={setIsAlertOpened}
+        text={alertText}
+        isError
+      />
       <div
         onClick={(e) => e.stopPropagation()}
         className="bg-dark mx-3 w-full max-w-[500px] overflow-hidden rounded-lg"
@@ -96,7 +103,7 @@ const CreateConversation: FC<CreateConversationProps> = ({ setIsOpened }) => {
           <div className="flex-1"></div>
           <div className="flex flex-1 items-center justify-center">
             <h1 className="whitespace-nowrap text-center text-2xl">
-              New conversation
+              Create New Squad
             </h1>
           </div>
           <div className="flex flex-1 items-center justify-end">
@@ -149,7 +156,7 @@ const CreateConversation: FC<CreateConversationProps> = ({ setIsOpened }) => {
             </div>
             <div className="border-dark-lighten flex justify-end border-t p-3">
               <button
-                disabled={selected.length === 0}
+                disabled={selected.length <= 1}
                 onClick={handleCreateConversation}
                 className="bg-dark-lighten rounded-lg py-2 px-3 transition duration-300 hover:brightness-125 disabled:!brightness-[80%]"
               >
