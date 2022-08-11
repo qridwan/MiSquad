@@ -36,38 +36,38 @@ const ChatHeader: FC<ChatHeaderProps> = ({ conversation }) => {
             <Skeleton className="h-10 w-10 rounded-full" />
           ) : (
             <>
-              {conversation.users.length === 2 ? (
+              {/* {conversation.users.length === 2 ? (
                 <img
                   className="h-10 w-10 rounded-full"
                   src={IMAGE_PROXY(filtered?.[0]?.data()?.photoURL)}
                   alt=""
                 />
               ) : (
-                <>
-                  {conversation?.group?.groupImage ? (
-                    <img
-                      className="h-10 w-10 flex-shrink-0 rounded-full object-cover"
-                      src={conversation.group.groupImage}
-                      alt=""
-                    />
-                  ) : (
-                    <div className="relative h-10 w-10 flex-shrink-0">
-                      <img
-                        className="absolute top-0 right-0 h-7 w-7 flex-shrink-0 rounded-full object-cover"
-                        src={IMAGE_PROXY(filtered?.[0]?.data()?.photoURL)}
-                        alt=""
-                      />
-                      <img
-                        className={`border-dark absolute bottom-0 left-0 z-[1] h-7 w-7 flex-shrink-0 rounded-full border-2 object-cover transition duration-300`}
-                        src={IMAGE_PROXY(filtered?.[1]?.data()?.photoURL)}
-                        alt=""
-                      />
-                    </div>
-                  )}
-                </>
+                <> */}
+              {conversation?.group?.groupImage ? (
+                <img
+                  className="h-10 w-10 flex-shrink-0 rounded-full object-cover"
+                  src={conversation.group.groupImage}
+                  alt=""
+                />
+              ) : (
+                <div className="relative h-10 w-10 flex-shrink-0">
+                  <img
+                    className="absolute top-0 right-0 h-7 w-7 flex-shrink-0 rounded-full object-cover"
+                    src={IMAGE_PROXY(filtered?.[0]?.data()?.photoURL)}
+                    alt=""
+                  />
+                  <img
+                    className={`border-dark absolute bottom-0 left-0 z-[1] h-7 w-7 flex-shrink-0 rounded-full border-2 object-cover transition duration-300`}
+                    src={IMAGE_PROXY(filtered?.[1]?.data()?.photoURL)}
+                    alt=""
+                  />
+                </div>
               )}
             </>
           )}
+          {/* </>
+          )} */}
 
           {loading ? (
             <Skeleton className="h-6 w-1/4" />
@@ -85,11 +85,11 @@ const ChatHeader: FC<ChatHeaderProps> = ({ conversation }) => {
 
         {!loading && (
           <>
-            {conversation.users.length > 2 && (
+            {/* {conversation.users.length > 2 && ( */}
               <button onClick={() => setIsGroupMembersOpened(true)}>
                 <i className="bx bxs-group text-primary text-2xl"></i>
               </button>
-            )}
+            {/* )} */}
 
             <button onClick={() => setIsConversationSettingsOpened(true)}>
               <i className="bx bxs-info-circle text-primary text-2xl"></i>

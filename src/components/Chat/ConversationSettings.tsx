@@ -123,7 +123,7 @@ const ConversationSettings: FC<ConversationConfigProps> = ({
         </div>
 
         <div className="flex flex-col items-stretch p-3">
-          {conversation.users.length > 2 && (
+          {/* {conversation.users.length > 2 && ( */}
             <>
               <button
                 onClick={() => setIsChangeChatNameOpened((prev) => !prev)}
@@ -180,7 +180,7 @@ const ConversationSettings: FC<ConversationConfigProps> = ({
                 isError
               />
             </>
-          )}
+          {/* )} */}
           <button
             onClick={() => setIsChangeThemeOpened((prev) => !prev)}
             className="bg-dark flex items-center justify-between gap-3 rounded-lg px-3 py-2 transition duration-300 hover:brightness-125"
@@ -222,7 +222,7 @@ const ConversationSettings: FC<ConversationConfigProps> = ({
             <span>View images & files</span>
           </button>
 
-          {conversation.users.length > 2 && (
+          {/* {conversation.users.length > 2 && ( */}
             <button
               onClick={() => leaveGroup()}
               className="bg-dark flex items-center justify-between gap-3 rounded-lg px-3 py-2 transition duration-300 hover:brightness-125"
@@ -232,7 +232,7 @@ const ConversationSettings: FC<ConversationConfigProps> = ({
                 <span>Leave group</span>
               </div>
             </button>
-          )}
+          {/* )} */}
         </div>
       </div>
     </div>

@@ -38,7 +38,7 @@ const Image: FC = () => {
       orderBy("createdAt", "desc")
     )
   );
-
+  // console.log("{ data, loading, error }: ", { data, loading, error });
   if (loading || error)
     return (
       <div className="flex h-80 items-center justify-center">

@@ -31,7 +31,7 @@ const ViewGroup: FC<ViewGroupProps> = ({ setIsOpened, conversation }) => {
           <div className="flex-1"></div>
           <div className="flex flex-1 items-center justify-center">
             <h1 className="whitespace-nowrap text-center text-2xl">
-              Group Members
+              Squad Members
             </h1>
           </div>
           <div className="flex flex-1 items-center justify-end">

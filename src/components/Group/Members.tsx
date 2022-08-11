@@ -63,6 +63,13 @@ const Members: FC<MembersProps> = ({ conversation }) => {
         <Spin />
       </div>
     );
+  // console.log(
+  //   "data",
+  //   conversation.group?.admins?.includes(currentUser?.uid as string)
+  // );
+  const isAdmin = (id: string) => {
+    return conversation.group?.admins?.includes(id as string);
+  };
 
   return (
     <>
@@ -85,12 +92,24 @@ const Members: FC<MembersProps> = ({ conversation }) => {
                 currentUser?.uid as string
               ) && (
                 <div className="group relative flex-shrink-0" tabIndex={0}>
-                  <button>
-                    <i className="bx bx-dots-horizontal-rounded text-2xl"></i>
-                  </button>
+                  {(user.uid !== currentUser?.uid ||
+                    conversation.users.length > 3) && (
+                    <button>
+                      <i className="bx bx-dots-horizontal-rounded text-2xl"></i>
+                    </button>
+                  )}
 
                   <div className="bg-dark-lighten border-dark-lighten invisible absolute top-full right-0 z-[1] flex w-max flex-col items-stretch rounded-lg border py-1 opacity-0 transition-all duration-300 group-focus-within:!visible group-focus-within:!opacity-100">
-                    {conversation.users.length > 3 && (
+                    {user.uid !== currentUser?.uid && !isAdmin(user.uid) && (
+                      <button
+                        onClick={() => handleMakeAdmin(user.uid as string)}
+                        className="bg-dark-lighten flex items-center gap-1 px-3 py-1 transition duration-300 hover:brightness-125"
+                      >
+                        <i className="bx bx-user-check text-2xl"></i>
+                        <span>Make an admin</span>
+                      </button>
+                    )}{" "}
+                    {conversation.users.length >= 3 && (
                       <button
                         onClick={() => handleRemoveFromGroup(user.uid)}
                         className="bg-dark-lighten flex items-center gap-1 px-3 py-1 transition duration-300 hover:brightness-125"
@@ -101,15 +120,6 @@ const Members: FC<MembersProps> = ({ conversation }) => {
                             ? "Leave group"
                             : "Kick from group"}
                         </span>
-                      </button>
-                    )}
-                    {user.uid !== currentUser?.uid && (
-                      <button
-                        onClick={() => handleMakeAdmin(user.uid)}
-                        className="bg-dark-lighten flex items-center gap-1 px-3 py-1 transition duration-300 hover:brightness-125"
-                      >
-                        <i className="bx bx-user-check text-2xl"></i>
-                        <span>Make an admin</span>
                       </button>
                     )}
                   </div>
