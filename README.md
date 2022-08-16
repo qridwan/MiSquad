@@ -10,14 +10,11 @@ A full-feature messenger clone built with React and Firebase
 </p> -->
 
 ## Live demo
-
-<!-- Official Website: [https://fireverse.pages.dev](https://fireverse.pages.dev) -->
+ [Website](https://fireverse.pages.dev)
 
 ## Main technology used
-
-- react, typescript, tailwind
+- react, typescript, tailwindCSS
 - firebase (auth, firestore, storage)
-- zustand
 - emoji-mart
 
 ## Features
@@ -42,28 +39,3 @@ A full-feature messenger clone built with React and Firebase
   - Change theme
 - View conversation images, files
 - Detect link an add an anchor to it
-
-## Installation
-
-- Clone the project
-- Run `npm install`
-- Create your own firebase project
-  - Enable auth (google, facebook)
-  - Enable cloud firestore
-  - Enable firebase storage
-- Create your own giphy developer account
-- Example .env file:
-
-```env
-VITE_FIREBASE_CONFIG={"apiKey":"","authDomain":"","projectId":"","storageBucket":"","messagingSenderId":"","appId":""}
-VITE_GIPHY_API_KEY=your_api_key
-```
-
-## Previews
-
-<!-- ![Preview 1](https://res.cloudinary.com/naptest/image/upload/v1644039987/fireverse/preview-1_yujhpl.png)
-![Preview 2](https://res.cloudinary.com/naptest/image/upload/v1644039987/fireverse/preview-2_qlxjjf.png)
-![Preview 3](https://res.cloudinary.com/naptest/image/upload/v1644039986/fireverse/preview-3_tgqahb.png) -->
-
-## Summary
-Upcoming...
