@@ -10,7 +10,7 @@ A full-feature messenger application built with React and Firebase
 </p> -->
 
 ## Live demo
- [Website](https://fireverse.pages.dev)
+ [Website](https://misquad.vercel.app/)
 
 ## Main technology used
 - react, typescript, tailwindCSS
@@ -20,7 +20,7 @@ A full-feature messenger application built with React and Firebase
 ## Features
 
 - Sign in with Google
-- Create conversations (personally, group)
+- Create conversations (group only)
 - Allow sending
   - Text
   - Image
