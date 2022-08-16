@@ -1,6 +1,6 @@
 # mySquad group chat application
 
-A full-feature messenger clone built with React and Firebase
+A full-feature messenger application built with React and Firebase
 
 <!-- <p align="center">
   <img alt="Stars" src="https://badgen.net/github/stars/napthedev/fireverse">
