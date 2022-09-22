@@ -1,4 +1,4 @@
-# mySquad group chat application
+# miSquad group chat application
 
 A full-feature messenger application built with React and Firebase
 
